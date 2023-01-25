@@ -6,7 +6,5 @@ public class Application {
 
         MainMenuView mainMenuView = new MainMenuView();
         mainMenuView.menu();
-
-
     }
 }
