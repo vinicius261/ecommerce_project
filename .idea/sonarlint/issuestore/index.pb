@@ -8,8 +8,6 @@ E
 `
 0src/br/com/ecommerceproject/model/Ecommerce.java,0\5\05580993ce613b7affb75c501f5391c0fee3621d
 c
-3src/br/com/ecommerceproject/view/EcommerceView.java,b\f\bf8da42b7262e61d0a9e7851c47eb28baf11bc30
-c
 3src/br/com/ecommerceproject/model/GymEquipment.java,a\6\a6fc07abb49fb518f01aa2bde032f3531f26ad72
 `
 0src/br/com/ecommerceproject/service/Payment.java,2\0\203c5285b4199991afd01309ac8851d2a7c1b691

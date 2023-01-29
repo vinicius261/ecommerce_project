@@ -14,12 +14,13 @@ public class CostumerRegistrationController {
         this.dataBase = dataBase;
     }
 
-    public void createNewRecord(String name, String email, String password) {
+    public Costumer createNewRecord(String name, String email, String password) {
 
         Costumer costumer = new Costumer(name, email, password);
 
         this.dataBase.add(costumer);
 
+        return costumer;
     }
 
     public String validate (Validations validator, String msg){
@@ -32,8 +33,7 @@ public class CostumerRegistrationController {
             validator.validate(data);
         }catch (RuntimeException ex){
             System.out.println(ex.getMessage());
-            data = scanner.nextLine();
-            validator.validate(data);
+            data = validate(validator, msg);
         }
 
         return data;

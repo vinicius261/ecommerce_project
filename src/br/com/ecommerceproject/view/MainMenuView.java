@@ -16,12 +16,12 @@ public class MainMenuView {
     public MainMenuView(DataBase dataBase){
         this.scanner = new Scanner(System.in);
         this.costumerRegistrationView = new CostumerRegistrationView(dataBase);
-        this.loginView = new LoginView();
+        this.loginView = new LoginView(dataBase);
         this.mainMenuController = new MainMenuController();
     }
 
     public void menu(){
-        System.out.println("Já tem uma conta no Mercado Saúde?\n 1 - Sim! \n 2 - Não,quero fazer!");
+        System.out.println("Já tem uma conta no Mercado Saúde?\n\n 1 - Sim! \n 2 - Não,quero fazer!");
 
         try {
             switch (mainMenuController.menuOption(scanner.nextLine())) {
