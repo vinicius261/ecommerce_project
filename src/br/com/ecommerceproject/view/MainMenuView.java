@@ -1,20 +1,21 @@
 package br.com.ecommerceproject.view;
 
 import br.com.ecommerceproject.controller.MainMenuController;
+import br.com.ecommerceproject.database.DataBase;
 import br.com.ecommerceproject.exceptions.InvalidOptionException;
 
 import java.util.Scanner;
 
 public class MainMenuView {
     private static Scanner scanner;
-    private RegistrationView registrationView;
+    private CostumerRegistrationView costumerRegistrationView;
     private LoginView loginView;
 
     private MainMenuController mainMenuController;
 
-    public MainMenuView(){
+    public MainMenuView(DataBase dataBase){
         this.scanner = new Scanner(System.in);
-        this.registrationView = new RegistrationView();
+        this.costumerRegistrationView = new CostumerRegistrationView(dataBase);
         this.loginView = new LoginView();
         this.mainMenuController = new MainMenuController();
     }
@@ -28,7 +29,7 @@ public class MainMenuView {
                     loginView.login();
                     break;
                 case 2:
-                    registrationView.registration();
+                    costumerRegistrationView.registration();
             }
         }catch (InvalidOptionException ex){
             System.out.println(ex.getMessage());
