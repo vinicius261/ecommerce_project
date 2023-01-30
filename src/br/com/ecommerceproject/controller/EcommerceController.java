@@ -45,11 +45,11 @@ public class EcommerceController {
 
 
         if (product instanceof Perishable){
-            System.out.println("\n               " + product.getName() + "\n" + "Preço: " + product.getPrice() +
+            System.out.println("\n               " + product.getName() + "\n" + "Preço: " + product.getPrice() + "R$" +
                     "\nEstoque: " + product.getQuantity() + "\nDescrição: " + product.getDescription() +
                     "\nData de vencimento: " + ((Perishable) product).getBestBeforeDate());
         }else {
-            System.out.println("\n               " + product.getName() + "\n" + "Preço: " + product.getPrice() +
+            System.out.println("\n               " + product.getName() + "\n" + "Preço: " + product.getPrice() + "R$" +
                     "\nEstoque: " + product.getQuantity() + "\nDescrição: " + product.getDescription());
         }
 
