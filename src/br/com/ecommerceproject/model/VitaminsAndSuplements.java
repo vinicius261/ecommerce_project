@@ -3,24 +3,45 @@ package br.com.ecommerceproject.model;
 import br.com.ecommerceproject.interfaces.Perishable;
 import br.com.ecommerceproject.interfaces.Products;
 
-public class VitaminsAndSuplements implements Products, Perishable {
-    @Override
-    public void getBestBeforeDate() {
+import java.util.Date;
 
+public class VitaminsAndSuplements implements Perishable {
+
+    private String name;
+    private Double price;
+    private Integer quantity;
+    private String description;
+    private Date bestBeforeDate;
+
+    public VitaminsAndSuplements(String name, Double price, Integer quantity, String description, Date bestBeforeDate){
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.description = description;
+        this.bestBeforeDate = bestBeforeDate;
+
+    }
+    @Override
+    public Date getBestBeforeDate() {
+        return this.bestBeforeDate;
+    }
+    @Override
+    public String getName() {
+        return this.name;
     }
 
     @Override
-    public void getPrice() {
-
+    public Double getPrice() {
+        return this.price;
     }
 
     @Override
-    public void getQuantity() {
-
+    public Integer getQuantity() {
+        return this.quantity;
     }
 
     @Override
-    public void getDescription() {
-
+    public String getDescription() {
+        return this.description;
     }
 }

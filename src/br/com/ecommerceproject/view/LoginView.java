@@ -16,7 +16,7 @@ public class LoginView {
         this.scanner = new Scanner(System.in);
     }
     public void login() {
-        System.out.println("Área de login\n");
+        System.out.println("\n               Área de login\n");
 
         System.out.println("Insira seu email cadastrado: ");
         String login = scanner.nextLine();

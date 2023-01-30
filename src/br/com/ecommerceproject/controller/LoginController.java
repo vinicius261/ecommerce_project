@@ -7,27 +7,21 @@ import br.com.ecommerceproject.view.LoginView;
 
 public class LoginController {
     private DataBase dataBase;
+    public SearchCostumerController searchCostumer;
 
     public  LoginController(DataBase dataBase){
         this.dataBase = dataBase;
+        this.searchCostumer = new SearchCostumerController(dataBase);
     }
 
     public Costumer loginCheck(String email, String password) {
-        int index = 0;
-        Costumer LogginInCostumer = null;
+        Costumer logginInCostumer = searchCostumer.searchCostumer(email);
         Costumer loggedInCostumer = null;
-
-        for (Costumer costumer: dataBase.getCostumers()) {
-            if(costumer.getLogin().equals(email)){
-                index = dataBase.getCostumers().indexOf(costumer);
-                LogginInCostumer = costumer;
-            }
-        }
 
         LoginCheckController loginCheckController = new LoginCheckController();
         try {
-            loginCheckController.loginCheck(dataBase, index, password);
-           loggedInCostumer = LogginInCostumer;
+            loginCheckController.loginCheck(logginInCostumer , password);
+            loggedInCostumer = logginInCostumer;
 
         }catch (IndexOutOfBoundsException ex){
             System.out.println("Dados incorretos.\n");

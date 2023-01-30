@@ -1,5 +1,7 @@
 package br.com.ecommerceproject.interfaces;
 
-public interface Perishable {
-    void getBestBeforeDate();
+import java.util.Date;
+
+public interface Perishable extends Products {
+    Date getBestBeforeDate();
 }

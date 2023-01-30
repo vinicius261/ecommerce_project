@@ -1,16 +1,22 @@
 package br.com.ecommerceproject.model;
 
+
+import br.com.ecommerceproject.interfaces.Products;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Costumer {
     private String name;
     private String login;
     private String password;
-    private Cart cart;
+    private List<Products> cart;
 
     public Costumer(String name, String login, String password){
         this.name = name;
         this.login = login;
         this.password = password;
-        this.cart = new Cart();
+        this.cart = new ArrayList<Products>();
     }
 
     public String getName() {
@@ -29,11 +35,11 @@ public class Costumer {
         }
     }
 
-    public Cart getCart() {
+    public List<Products> getCart() {
         return cart;
     }
 
-    public void setCart(Cart cart) {
-        this.cart = cart;
+    public void addToCart(Products product) {
+        this.cart.add(product);
     }
 }
