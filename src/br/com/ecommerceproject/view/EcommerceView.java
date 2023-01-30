@@ -21,7 +21,7 @@ public class EcommerceView {
 
     public void ecommerceView(){
         System.out.println("\n               Produtos\n" + "Para ver em detalhes um produto digite o número dele\n" +
-                "Para sair digite qualquer 0");
+                "Para sair digite 0");
 
         controller.showAllProducts();
 
