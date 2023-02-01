@@ -21,15 +21,19 @@ public class MainMenuView {
     }
 
     public void menu(){
-        System.out.println("Já tem uma conta no Mercado Saúde?\n\n 1 - Sim! \n 2 - Não,quero fazer!");
+        System.out.println("--------------------------------------------------------------------------------------------");
+        System.out.println("\n               Bem vindo ao Mercado Saúde!\n" +
+                "O seu Ecommerce de itens esportivos e alimentação saudável.\n");
+        System.out.println("\nJá tem uma conta no Mercado Saúde?\n\n 1 - Sim! \n 2 - Não,quero fazer!");
+        System.out.println("--------------------------------------------------------------------------------------------");
 
         try {
             switch (mainMenuController.menuOption(scanner.nextLine())) {
                 case 1:
-                    loginView.login();
+                    loginView.view();
                     break;
                 case 2:
-                    costumerRegistrationView.registration();
+                    costumerRegistrationView.view();
             }
         }catch (InvalidOptionException ex){
             System.out.println(ex.getMessage());

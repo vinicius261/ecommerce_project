@@ -6,9 +6,6 @@ import java.text.ParseException;
 
 public class Application {
     public static void main(String[] args) {
-        System.out.println("\n               Bem vindo ao Mercado Saúde!\n" +
-                "O seu Ecommerce de itens esportivos e alimentação saudável.\n");
-
         DataBase dataBase = new DataBase();
 
         CreateData createData = new CreateData(dataBase);
