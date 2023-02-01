@@ -2,9 +2,7 @@ package br.com.ecommerceproject.controller;
 
 import br.com.ecommerceproject.database.DataBase;
 import br.com.ecommerceproject.interfaces.Products;
-import br.com.ecommerceproject.model.Costumer;
-import br.com.ecommerceproject.model.GymEquipment;
-import br.com.ecommerceproject.model.VitaminsAndSuplements;
+import br.com.ecommerceproject.model.*;
 import br.com.ecommerceproject.validationcode.Validations;
 
 import java.util.List;
@@ -31,13 +29,13 @@ public class EcommerceController {
         Products productType = search.searchStorageProduct(productCode);
 
         Products cartProduct;
-        if ( productType instanceof VitaminsAndSuplements){
-            cartProduct = new VitaminsAndSuplements(productType.getName(),
+        if ( productType instanceof CartVitaminsAndSuplements){
+            cartProduct = new CartVitaminsAndSuplements(productType.getName(),
                     productType.getPrice(), 1, productType.getDescription(),
-                    ((VitaminsAndSuplements) productType).getBestBeforeDate());
+                    ((CartVitaminsAndSuplements) productType).getBestBeforeDate(), productType.getCode());
         }else {
-            cartProduct = new GymEquipment(productType.getName(), +
-                    productType.getPrice(), 1, productType.getDescription());
+            cartProduct = new CartGymEquipment(productType.getName(), +
+                    productType.getPrice(), 1, productType.getDescription(), productType.getCode());
         }
 
         cart.addToCart(cartProduct);

@@ -23,15 +23,15 @@ public class LoginController {
             loginCheckController.loginCheck(logginInCostumer , password);
             loggedInCostumer = logginInCostumer;
 
-        }catch (IndexOutOfBoundsException ex){
+        }catch (IndexOutOfBoundsException | NullPointerException ex){
             System.out.println("Dados incorretos.\n");
             LoginView view = new LoginView(dataBase);
-            view.login();
+            loggedInCostumer = view.login();
 
         }catch (PasswordIncorrectException ex) {
             System.out.println(ex.getMessage());
             LoginView view = new LoginView(dataBase);
-            view.login();
+            loggedInCostumer = view.login();
         }
 
         return loggedInCostumer;

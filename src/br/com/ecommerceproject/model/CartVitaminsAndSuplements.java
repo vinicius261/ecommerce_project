@@ -6,7 +6,7 @@ import br.com.ecommerceproject.interfaces.Perishable;
 
 import java.util.Date;
 
-public class VitaminsAndSuplements implements Perishable {
+public class CartVitaminsAndSuplements implements Perishable {
     private  String code;
     private String name;
     private Double price;
@@ -14,15 +14,14 @@ public class VitaminsAndSuplements implements Perishable {
     private String description;
     private Date bestBeforeDate;
 
-    public VitaminsAndSuplements(String name, Double price, Integer quantity, String description, Date bestBeforeDate){
+    public CartVitaminsAndSuplements(String name, Double price, Integer quantity, String description,
+                                     Date bestBeforeDate, String code){
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.description = description;
         this.bestBeforeDate = bestBeforeDate;
-
-        ProductCodeGeneratorController codeGenerator = new ProductCodeGeneratorController(new DataBase());
-        this.code = codeGenerator.generate();
+        this.code = code;
 
     }
     @Override

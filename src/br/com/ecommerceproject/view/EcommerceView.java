@@ -70,10 +70,10 @@ public class EcommerceView {
     public void showProductDetails(String productCode) {
         Products product = null;
 
-        try {
-            SearchProductController search = new SearchProductController(dataBase);
-            product = search.searchStorageProduct(productCode);
-        }catch (IndexOutOfBoundsException ex){
+        SearchProductController search = new SearchProductController(dataBase);
+        product = search.searchStorageProduct(productCode);
+
+        if(product == null) {
             System.out.println("Esse código não corresponde a nenhum produto.");
             view();
         }

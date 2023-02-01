@@ -26,7 +26,7 @@ public class CostumerRegistrationView {
         registration();
 
         LoginView loginView = new LoginView(dataBase);
-        loginView.login();
+        loginView.view();
 
     }
 
@@ -39,7 +39,7 @@ public class CostumerRegistrationView {
                 "No mínimo 6 caracteres\nUma letra maiúscula\nUma letra minúscula\nUm número");
 
         controller.createNewRecord(name, email, password);
-        System.out.println("Cadastro realizado!\n");
+        System.out.println("Cadastro realizado!");
         System.out.println("--------------------------------------------------------------------------------------------");
     }
 }
