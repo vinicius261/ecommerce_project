@@ -35,8 +35,11 @@ public class CartController {
                     ecommerceView.view();
 
                 case "p":
-                    PaymentView paymentView = new PaymentView(dataBase, loggedInCostumer);
-                    paymentView.paymentView();
+                    Double totalValue = totalValue();
+                    if (totalValue> 0) {
+                        PaymentView paymentView = new PaymentView(dataBase, loggedInCostumer);
+                        paymentView.paymentView(totalValue);
+                    }
             }
         }
 
@@ -120,10 +123,11 @@ public class CartController {
 
         if (product == null){
             loggedInCostumer.addToCart(cartProduct);
-            storage.decreaseProductQuantity(cartProduct.getCode());
         }else{
             product.increaseQuantity();
         }
+
+        storage.decreaseProductQuantity(cartProduct.getCode());
     }
 
     public List<Products> cartProducts() {

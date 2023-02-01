@@ -12,6 +12,8 @@ public class LoginCheckController {
             }
         }catch (IndexOutOfBoundsException ex){
            throw new IndexOutOfBoundsException();
+        }catch (NumberFormatException ex){
+            throw new NullPointerException();
         }
     }
 
