@@ -1,6 +1,6 @@
 package br.com.ecommerceproject.model;
 
-import br.com.ecommerceproject.controller.CodeGeneratorController;
+import br.com.ecommerceproject.controller.ProductCodeGeneratorController;
 import br.com.ecommerceproject.database.DataBase;
 import br.com.ecommerceproject.interfaces.Products;
 
@@ -17,14 +17,14 @@ public class GymEquipment implements Products {
         this.quantity = quantity;
         this.description = description;
 
-        CodeGeneratorController codeGenerator = new CodeGeneratorController(new DataBase());
+        ProductCodeGeneratorController codeGenerator = new ProductCodeGeneratorController(new DataBase());
         this.code = codeGenerator.generate();
 
     }
 
     @Override
     public String getCode() {
-        return null;
+        return this.code;
     }
 
     @Override

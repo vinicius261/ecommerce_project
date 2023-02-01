@@ -82,14 +82,16 @@ public class CartController {
                     break;
 
                 case "-":
-                    if (productType.getQuantity() == 0) {
-                        loggedInCostumer.getCart().remove(cartProductIndex);
+                    if (cartProduct.getQuantity() == 1) {
+                        loggedInCostumer.getCart().remove(cartProduct);
+                        storage.increaseProductQuantity(productType.getCode());
+                        System.out.println("Produto removido do carrinho.");
                     } else {
                         loggedInCostumer.getCart().get(cartProductIndex).decreaseQuantity();
+                        storage.increaseProductQuantity(productType.getCode());
+                        System.out.println(loggedInCostumer.getCart().get(cartProductIndex).getQuantity() +
+                                " unidades de " + loggedInCostumer.getCart().get(cartProductIndex).getName());
                     }
-                    storage.increaseProductQuantity(cartProduct.getCode());
-                    System.out.println(loggedInCostumer.getCart().get(cartProductIndex).getQuantity() +
-                            " unidades de " + loggedInCostumer.getCart().get(cartProductIndex).getName());
                     view.view();
                     break;
 
