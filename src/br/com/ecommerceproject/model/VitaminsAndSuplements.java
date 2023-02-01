@@ -1,12 +1,14 @@
 package br.com.ecommerceproject.model;
 
+import br.com.ecommerceproject.controller.CodeGeneratorController;
+import br.com.ecommerceproject.database.DataBase;
 import br.com.ecommerceproject.interfaces.Perishable;
 import br.com.ecommerceproject.interfaces.Products;
 
 import java.util.Date;
 
 public class VitaminsAndSuplements implements Perishable {
-
+    private  String code;
     private String name;
     private Double price;
     private Integer quantity;
@@ -20,11 +22,20 @@ public class VitaminsAndSuplements implements Perishable {
         this.description = description;
         this.bestBeforeDate = bestBeforeDate;
 
+        CodeGeneratorController codeGenerator = new CodeGeneratorController(new DataBase());
+        this.code = codeGenerator.generate();
+
     }
     @Override
     public Date getBestBeforeDate() {
         return this.bestBeforeDate;
     }
+
+    @Override
+    public String getCode() {
+        return this.code;
+    }
+
     @Override
     public String getName() {
         return this.name;
@@ -38,6 +49,16 @@ public class VitaminsAndSuplements implements Perishable {
     @Override
     public Integer getQuantity() {
         return this.quantity;
+    }
+
+    @Override
+    public void increaseQuantity() {
+        this.quantity++;
+    }
+
+    @Override
+    public void decreaseQuantity() {
+        this.quantity--;
     }
 
     @Override

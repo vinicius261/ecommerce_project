@@ -20,6 +20,16 @@ public class CostumerRegistrationView {
         this.scanner = new Scanner(System.in);
     }
 
+    public void view(){
+        System.out.println("--------------------------------------------------------------------------------------------");
+        System.out.println("\n               Área de cadastro\n");
+        registration();
+
+        LoginView loginView = new LoginView(dataBase);
+        loginView.login();
+
+    }
+
     public void registration() {
         String name = controller.validate(new NameInputController(), "Qual o seu nome?");
 
@@ -28,12 +38,8 @@ public class CostumerRegistrationView {
         String password = controller.validate(new PasswordInputController(), "Insira uma senha com:\n\n" +
                 "No mínimo 6 caracteres\nUma letra maiúscula\nUma letra minúscula\nUm número");
 
-        Costumer loggedInCostumer = controller.createNewRecord(name, email, password);
+        controller.createNewRecord(name, email, password);
         System.out.println("Cadastro realizado!\n");
-
-        EcommerceView ecommerce = new EcommerceView(dataBase, loggedInCostumer);
-        ecommerce.ecommerceView();
-
-
+        System.out.println("--------------------------------------------------------------------------------------------");
     }
 }

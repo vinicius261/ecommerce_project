@@ -15,9 +15,17 @@ public class LoginView {
         this.controller = new LoginController(dataBase);
         this.scanner = new Scanner(System.in);
     }
-    public void login() {
+
+    public void view(){
+        System.out.println("--------------------------------------------------------------------------------------------");
         System.out.println("\n               Área de login\n");
 
+        Costumer loggedInCostumer = login();
+
+        EcommerceView ecommerce = new EcommerceView(dataBase, loggedInCostumer);
+        ecommerce.view();
+    }
+    public Costumer login() {
         System.out.println("Insira seu email cadastrado: ");
         String login = scanner.nextLine();
 
@@ -27,8 +35,8 @@ public class LoginView {
         Costumer loggedInCostumer = controller.loginCheck(login, password);
 
         System.out.println("Login efetuado, " + loggedInCostumer.getName() +"!");
+        System.out.println("--------------------------------------------------------------------------------------------");
 
-        EcommerceView ecommerce = new EcommerceView(dataBase, loggedInCostumer);
-        ecommerce.ecommerceView();
+        return loggedInCostumer;
     }
 }

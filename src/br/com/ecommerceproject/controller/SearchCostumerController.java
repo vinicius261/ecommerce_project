@@ -11,15 +11,15 @@ public class SearchCostumerController {
     }
 
     public Costumer searchCostumer(String email){
-        Costumer returnableCostumer = null;
+        Costumer wantedCostumer = null;
 
         for (Costumer costumer: dataBase.getCostumers()) {
             if(costumer.getLogin().equals(email)){
-                returnableCostumer = costumer;
+                wantedCostumer = costumer;
             }
         }
 
-        return returnableCostumer;
+        return wantedCostumer;
     }
 
 }

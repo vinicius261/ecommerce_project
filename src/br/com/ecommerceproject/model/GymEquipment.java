@@ -1,8 +1,11 @@
 package br.com.ecommerceproject.model;
 
+import br.com.ecommerceproject.controller.CodeGeneratorController;
+import br.com.ecommerceproject.database.DataBase;
 import br.com.ecommerceproject.interfaces.Products;
 
 public class GymEquipment implements Products {
+    private String code;
     private String name;
     private Double price;
     private Integer quantity;
@@ -13,7 +16,17 @@ public class GymEquipment implements Products {
         this.price = price;
         this.quantity = quantity;
         this.description = description;
+
+        CodeGeneratorController codeGenerator = new CodeGeneratorController(new DataBase());
+        this.code = codeGenerator.generate();
+
     }
+
+    @Override
+    public String getCode() {
+        return null;
+    }
+
     @Override
     public String getName() {
         return this.name;
@@ -27,6 +40,14 @@ public class GymEquipment implements Products {
     @Override
     public Integer getQuantity() {
         return this.quantity;
+    }
+
+    public void increaseQuantity() {
+       this.quantity++;
+    }
+
+    public void decreaseQuantity() {
+        this.quantity--;
     }
 
     @Override
