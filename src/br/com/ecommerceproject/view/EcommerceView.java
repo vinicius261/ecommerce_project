@@ -61,9 +61,9 @@ public class EcommerceView {
     public void showAllProducts() {
         List<Products> products = controller.availableProducts();
 
-        for (Products product : products) {
-            System.out.println(product.getCode() + " - " + product.getName() + " - " + product.getPrice());
-        }
+        products.forEach(product -> { System.out.println(product.getCode() + " - "
+                + product.getName() + " - " + product.getPrice());});
+
         System.out.println("--------------------------------------------------------------------------------------------");
     }
 

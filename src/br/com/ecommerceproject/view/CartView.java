@@ -41,10 +41,9 @@ public class CartView{
         }else {
 
             System.out.println("\nNº - Produto  	 Quantidade	    Valor total do item ");
-            for (Products product : products) {
-                System.out.println(product.getCode() + " - " + product.getName() + "   -   " + product.getQuantity() + "   -   "
-                        + product.getPrice() * product.getQuantity());
-            }
+
+            products.forEach(product -> {System.out.println(product.getCode() + " - " + product.getName() + "   -   " + product.getQuantity() + "   -   "
+                    + product.getPrice() * product.getQuantity());});
 
             Double totalValue = controller.totalValue();
             System.out.println("\n\n			    Valor total do Carrinho: " + totalValue + "R$");
