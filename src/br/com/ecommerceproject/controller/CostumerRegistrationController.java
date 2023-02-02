@@ -1,7 +1,6 @@
 package br.com.ecommerceproject.controller;
 
 import br.com.ecommerceproject.database.DataBase;
-import br.com.ecommerceproject.exceptions.InvalidInputNameException;
 import br.com.ecommerceproject.interfaces.Validations;
 import br.com.ecommerceproject.model.Costumer;
 
@@ -18,7 +17,7 @@ public class CostumerRegistrationController {
 
         Costumer costumer = new Costumer(name, email, password);
 
-        this.dataBase.add(costumer);
+        this.dataBase.addCostumer(costumer);
 
         return costumer;
     }

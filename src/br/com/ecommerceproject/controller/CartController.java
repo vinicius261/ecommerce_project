@@ -64,7 +64,7 @@ public class CartController {
 
             switch (actionOption) {
                 case "r":
-                    loggedInCostumer.getCart().remove(cartProduct);
+                    loggedInCostumer.removeProduct(cartProduct);
                     System.out.println("\nProduto removido do carrinho.");
                     view.view();
                     break;
@@ -86,7 +86,7 @@ public class CartController {
 
                 case "-":
                     if (cartProduct.getQuantity() == 1) {
-                        loggedInCostumer.getCart().remove(cartProduct);
+                        loggedInCostumer.removeProduct(cartProduct);
                         storage.increaseProductQuantity(productType.getCode());
                         System.out.println("Produto removido do carrinho.");
                     } else {
