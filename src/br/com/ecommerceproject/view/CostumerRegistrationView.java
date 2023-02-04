@@ -5,40 +5,39 @@ import br.com.ecommerceproject.controller.EmailInputController;
 import br.com.ecommerceproject.controller.NameInputController;
 import br.com.ecommerceproject.controller.PasswordInputController;
 import br.com.ecommerceproject.database.DataBase;
-import br.com.ecommerceproject.model.Costumer;
 
 import java.util.Scanner;
 
 public class CostumerRegistrationView {
     private Scanner scanner;
-    private CostumerRegistrationController controller;
+    private CostumerRegistrationController costumerRegistrationController;
     private DataBase dataBase;
 
     public CostumerRegistrationView(DataBase dataBase) {
-        this.controller = new CostumerRegistrationController(dataBase);
+        this.costumerRegistrationController = new CostumerRegistrationController(dataBase);
         this.dataBase = dataBase;
         this.scanner = new Scanner(System.in);
     }
 
-    public void view(){
+    public void showCostumerRegistrationView(){
         System.out.println("--------------------------------------------------------------------------------------------");
         System.out.println("\n               Área de cadastro\n");
-        registration();
+        processRegistration();
 
         LoginView loginView = new LoginView(dataBase);
-        loginView.view();
+        loginView.showLoginView();
 
     }
 
-    public void registration() {
-        String name = controller.validate(new NameInputController(), "Qual o seu nome?");
+    public void processRegistration() {
+        String name = costumerRegistrationController.validateCostumerData(new NameInputController(), "Qual o seu nome?");
 
-        String email = controller.validate(new EmailInputController(dataBase), "Insira um email: ");
+        String email = costumerRegistrationController.validateCostumerData(new EmailInputController(dataBase), "Insira um email: ");
 
-        String password = controller.validate(new PasswordInputController(), "Insira uma senha com:\n\n" +
+        String password = costumerRegistrationController.validateCostumerData(new PasswordInputController(), "Insira uma senha com:\n\n" +
                 "No mínimo 6 caracteres\nUma letra maiúscula\nUma letra minúscula\nUm número");
 
-        controller.createNewRecord(name, email, password);
+        costumerRegistrationController.createNewRecord(name, email, password);
         System.out.println("Cadastro realizado!");
         System.out.println("--------------------------------------------------------------------------------------------");
     }

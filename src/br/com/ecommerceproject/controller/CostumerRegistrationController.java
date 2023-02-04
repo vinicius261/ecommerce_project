@@ -22,7 +22,7 @@ public class CostumerRegistrationController {
         return costumer;
     }
 
-    public String validate (Validations validator, String msg){
+    public String validateCostumerData(Validations validator, String msg){
         Scanner scanner =  new Scanner(System.in);
         String data;
 
@@ -32,7 +32,7 @@ public class CostumerRegistrationController {
             validator.validate(data);
         }catch (RuntimeException ex){
             System.out.println(ex.getMessage());
-            data = validate(validator, msg);
+            data = validateCostumerData(validator, msg);
         }
 
         return data;

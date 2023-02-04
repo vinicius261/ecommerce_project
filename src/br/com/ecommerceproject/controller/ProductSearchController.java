@@ -4,10 +4,10 @@ import br.com.ecommerceproject.database.DataBase;
 import br.com.ecommerceproject.interfaces.Products;
 import br.com.ecommerceproject.model.Costumer;
 
-public class SearchProductController {
+public class ProductSearchController {
     private DataBase dataBase;
 
-    public SearchProductController(DataBase dataBase){
+    public ProductSearchController(DataBase dataBase){
         this.dataBase = dataBase;
     }
 

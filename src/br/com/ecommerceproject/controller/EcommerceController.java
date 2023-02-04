@@ -3,19 +3,19 @@ package br.com.ecommerceproject.controller;
 import br.com.ecommerceproject.database.DataBase;
 import br.com.ecommerceproject.interfaces.Products;
 import br.com.ecommerceproject.model.*;
-import br.com.ecommerceproject.validationcode.Validations;
+import br.com.ecommerceproject.validationcode.GeneralValidations;
 
 import java.util.List;
 
 public class EcommerceController {
     private DataBase dataBase;
     private Costumer loggedInCostumer;
-    private Validations validations;
+    private GeneralValidations generalValidations;
 
     public EcommerceController(DataBase dataBase,Costumer loggedInCostumer){
         this.dataBase = dataBase;
         this.loggedInCostumer = loggedInCostumer;
-        this.validations = new Validations();
+        this.generalValidations = new GeneralValidations();
     }
 
     public List<Products> availableProducts(){
@@ -23,7 +23,7 @@ public class EcommerceController {
     }
 
     public void sendToCart(String productCode) {
-        SearchProductController search =new SearchProductController(dataBase);
+        ProductSearchController search =new ProductSearchController(dataBase);
         CartController cart = new CartController(dataBase,loggedInCostumer);
 
         Products productType = search.searchStorageProduct(productCode);
