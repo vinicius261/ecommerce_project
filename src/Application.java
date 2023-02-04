@@ -6,8 +6,8 @@ public class Application {
     public static void main(String[] args) {
         DataBase dataBase = new DataBase();
 
-        DataForTesting createData = new DataForTesting(dataBase);
-        createData.createTestingData();
+        DataForTesting dataForTesting = new DataForTesting(dataBase);
+        dataForTesting.createTestingData();
 
         MainMenuView mainMenuView = new MainMenuView(dataBase);
         mainMenuView.showMainMenuView();
