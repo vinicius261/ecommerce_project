@@ -32,7 +32,7 @@ public class EcommerceView {
 
         showAllEcommerceProducts();
 
-        processEcommerceMenuChoice(scanner.nextLine());
+        processEcommerceMenuChoice();
 
     }
 
@@ -45,9 +45,11 @@ public class EcommerceView {
         System.out.println("--------------------------------------------------------------------------------------------");
     }
 
-    public void processEcommerceMenuChoice(String input){
+    public void processEcommerceMenuChoice(){
         System.out.println("\nPara ver em detalhes um produto digite o número dele.\n" +
                 "Para ver seu carrinho digite 'c'.\nPara sair digite 's'.\n");
+
+        String input= scanner.nextLine();
 
         if (input.equalsIgnoreCase("s")) {
             System.out.println("Volte sempre!");
@@ -83,12 +85,14 @@ public class EcommerceView {
         }
         System.out.println("--------------------------------------------------------------------------------------------");
 
-        processProductDetailMenuChoice(scanner.nextLine(), productCode);
+        processProductDetailMenuChoice(productCode);
     }
 
-    public void processProductDetailMenuChoice(String input, String productCode) {
+    public void processProductDetailMenuChoice(String productCode) {
         System.out.println("\nDeseja adicionar o produto ao carrinho?\nDigite 's' para adicionar ou qualquer tecla " +
                 "para voltar aos produtos.");
+
+        String input = scanner.nextLine();
 
         if(input.equalsIgnoreCase("s")) {
             ecommerceController.sendToCart(productCode);
@@ -101,8 +105,9 @@ public class EcommerceView {
                 CartView cartView = new CartView(dataBase, loggedInCostumer);
                 cartView.showCartview();
             }
-        }else {
-            showEcommerceView();
         }
+
+        showEcommerceView();
+
     }
 }

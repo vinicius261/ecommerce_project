@@ -77,6 +77,6 @@ public class PaymentView {
     }
 
     public void checkout(){
-        loggedInCostumer.getCart().clear();
+        loggedInCostumer.clearCart();
     }
 }

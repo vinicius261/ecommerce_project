@@ -47,4 +47,8 @@ public class Costumer {
     public void removeProduct(Products product) {
         this.cart.remove(product);
     }
+
+    public void clearCart(){
+        cart.clear();
+    }
 }
