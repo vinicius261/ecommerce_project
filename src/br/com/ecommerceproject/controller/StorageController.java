@@ -9,30 +9,30 @@ import java.util.Date;
 
 public class StorageController {
     private DataBase dataBase;
-    private SearchProductController search;
+    private ProductSearchController search;
 
     public StorageController(DataBase dataBase) {
         this.dataBase = dataBase;
-        this.search = new SearchProductController(dataBase);
+        this.search = new ProductSearchController(dataBase);
     }
 
-    public void createNewProductRecord(String name, Double price, Integer quantity, String description) {
+    public void createNewProductTypeRecord(String name, Double price, Integer quantity, String description) {
         GymEquipment product = new GymEquipment(name, price, quantity, description);
         dataBase.addProduct(product);
     }
 
-    public void createNewProductRecord(String name, Double price, Integer quantity, String description, Date date) {
+    public void createNewProductTypeRecord(String name, Double price, Integer quantity, String description, Date date) {
         VitaminsAndSuplements product = new VitaminsAndSuplements(name, price, quantity, description, date);
         dataBase.addProduct(product);
     }
 
-    public void increaseProductQuantity(String productCode) {
+    public void increaseProductTypeQuantity(String productCode) {
         Products product = search.searchStorageProduct(productCode);
         product.increaseQuantity();
 
     }
 
-    public void decreaseProductQuantity(String productCode) {
+    public void decreaseProductTypeQuantity(String productCode) {
         Products product = search.searchStorageProduct(productCode);
         product.decreaseQuantity();
     }

@@ -7,33 +7,43 @@ import br.com.ecommerceproject.view.LoginView;
 
 public class LoginController {
     private DataBase dataBase;
-    public SearchCostumerController searchCostumer;
+    public CostumerSearchController costumerSearch;
 
     public  LoginController(DataBase dataBase){
         this.dataBase = dataBase;
-        this.searchCostumer = new SearchCostumerController(dataBase);
+        this.costumerSearch = new CostumerSearchController(dataBase);
     }
 
-    public Costumer loginCheck(String email, String password) {
-        Costumer logginInCostumer = searchCostumer.searchCostumer(email);
+    public Costumer processLogin(String email, String password) {
         Costumer loggedInCostumer = null;
-
-        LoginCheckController loginCheckController = new LoginCheckController();
+        
         try {
-            loginCheckController.loginCheck(logginInCostumer , password);
-            loggedInCostumer = logginInCostumer;
+            loggedInCostumer = confirmLoginDetails(email , password);;
 
-        }catch (IndexOutOfBoundsException | NullPointerException ex){
+        }catch (IndexOutOfBoundsException | NullPointerException | PasswordIncorrectException ex){
             System.out.println("Dados incorretos.\n");
-            LoginView view = new LoginView(dataBase);
-            loggedInCostumer = view.login();
+            LoginView loginView = new LoginView(dataBase);
+            loggedInCostumer = loginView.login();
 
-        }catch (PasswordIncorrectException ex) {
-            System.out.println(ex.getMessage());
-            LoginView view = new LoginView(dataBase);
-            loggedInCostumer = view.login();
         }
 
         return loggedInCostumer;
+    }
+
+    public Costumer confirmLoginDetails(String email, String password){
+        Costumer logginInCostumer;
+
+        try {
+            logginInCostumer = costumerSearch.searchCostumer(email);
+            if (! logginInCostumer.validatePassword(password)) {
+                throw new PasswordIncorrectException("Dados incorretos");
+            }
+        }catch (IndexOutOfBoundsException ex){
+            throw new IndexOutOfBoundsException();
+        }catch (NumberFormatException ex){
+            throw new NullPointerException();
+        }
+
+        return logginInCostumer;
     }
 }

@@ -2,10 +2,10 @@ package br.com.ecommerceproject.validationcode;
 
 import java.util.Scanner;
 
-public class Validations {
+public class GeneralValidations {
     private Scanner scanner;
 
-    public Validations (){
+    public GeneralValidations(){
         this.scanner = new Scanner(System.in);
     }
 

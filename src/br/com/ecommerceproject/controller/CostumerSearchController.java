@@ -3,10 +3,10 @@ package br.com.ecommerceproject.controller;
 import br.com.ecommerceproject.database.DataBase;
 import br.com.ecommerceproject.model.Costumer;
 
-public class SearchCostumerController {
+public class CostumerSearchController {
     private DataBase dataBase;
 
-    public SearchCostumerController(DataBase dataBase){
+    public CostumerSearchController(DataBase dataBase){
         this.dataBase = dataBase;
     }
 

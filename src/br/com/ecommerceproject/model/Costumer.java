@@ -4,6 +4,7 @@ package br.com.ecommerceproject.model;
 import br.com.ecommerceproject.interfaces.Products;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Costumer {
@@ -16,7 +17,7 @@ public class Costumer {
         this.name = name;
         this.login = login;
         this.password = password;
-        this.cart = new ArrayList<Products>();
+        this.cart = new ArrayList<>();
     }
 
     public String getName() {
@@ -36,10 +37,18 @@ public class Costumer {
     }
 
     public List<Products> getCart() {
-        return cart;
+        return Collections.unmodifiableList(cart);
     }
 
     public void addToCart(Products product) {
         this.cart.add(product);
+    }
+
+    public void removeProduct(Products product) {
+        this.cart.remove(product);
+    }
+
+    public void clearCart(){
+        cart.clear();
     }
 }

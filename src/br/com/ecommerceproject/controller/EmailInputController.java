@@ -12,12 +12,12 @@ import java.util.regex.Pattern;
 public class EmailInputController implements Validations {
     private Scanner scanner;
     private DataBase dataBase;
-    private SearchCostumerController searchCostumer;
+    private CostumerSearchController searchCostumer;
 
     public EmailInputController(DataBase dataBase){
         this.dataBase = dataBase;
         this.scanner = new Scanner(System.in);
-        this.searchCostumer = new SearchCostumerController(dataBase);
+        this.searchCostumer = new CostumerSearchController(dataBase);
     }
 
     @Override

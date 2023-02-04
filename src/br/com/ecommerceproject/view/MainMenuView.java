@@ -20,24 +20,29 @@ public class MainMenuView {
         this.mainMenuController = new MainMenuController();
     }
 
-    public void menu(){
+    public void showMainMenuView(){
         System.out.println("--------------------------------------------------------------------------------------------");
-        System.out.println("\n               Bem vindo ao Mercado Saúde!\n" +
-                "O seu Ecommerce de itens esportivos e alimentação saudável.\n");
+        System.out.println("\n               Bem vindo ao Mercado Saúde!\n");
+
+        processMainMenuChoice();
+    }
+
+    private void processMainMenuChoice() {
+        System.out.println( "O seu Ecommerce de itens esportivos e alimentação saudável.\n");
         System.out.println("\nJá tem uma conta no Mercado Saúde?\n\n 1 - Sim! \n 2 - Não,quero fazer!");
         System.out.println("--------------------------------------------------------------------------------------------");
 
         try {
-            switch (mainMenuController.menuOption(scanner.nextLine())) {
+            switch (mainMenuController.getMainMenuChoice(scanner.nextLine())) {
                 case 1:
-                    loginView.view();
+                    loginView.showLoginView();
                     break;
                 case 2:
-                    costumerRegistrationView.view();
+                    costumerRegistrationView.showCostumerRegistrationView();
             }
         }catch (InvalidOptionException ex){
             System.out.println(ex.getMessage());
-            menu();
+            showMainMenuView();
         }
     }
 }

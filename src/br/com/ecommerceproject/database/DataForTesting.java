@@ -7,44 +7,44 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class CreateInitialData {
+public class DataForTesting {
     private DataBase dataBase;
     private CostumerRegistrationController costumerRegistration;
     private StorageController storage;
 
 
-    public CreateInitialData(DataBase dataBase){
+    public DataForTesting(DataBase dataBase){
         this.dataBase = dataBase;
         this.costumerRegistration = new CostumerRegistrationController(dataBase);
         this.storage = new StorageController(dataBase);
     }
 
-    public void createData() {
+    public void createTestingData() {
         costumerRegistration.createNewRecord("Vinicius", "v", "0");
 
         costumerRegistration.createNewRecord("José", "j", "0");
 
-        createProducts("Creatina",
+        createTestingProducts("Creatina",
                 100.5, 30, "Suplemento alimentar para ganho de força", "04/04/2023" );
-        createProducts("Halteres",
+        createTestingProducts("Halteres",
                 500.0, 15, "Par de Halteres de aço");
-        createProducts("Esteira",
+        createTestingProducts("Esteira",
                 1599.99, 5, "Esteira caseira");
-        createProducts("Proteina isolada de soja",
+        createTestingProducts("Proteina isolada de soja",
                 149.0, 35, "Suplemento proteico vegano.", "25/12/2024");
     }
 
-    public void createProducts(String name, Double price, Integer quantity, String description, String inputDate) {
+    public void createTestingProducts(String name, Double price, Integer quantity, String description, String inputDate) {
         try {
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             Date date = formatter.parse(inputDate);
-            storage.createNewProductRecord(name, price, quantity, description, date);
+            storage.createNewProductTypeRecord(name, price, quantity, description, date);
         }catch (ParseException ex){
             System.out.println(ex.getMessage());
         }
     }
 
-    public void createProducts(String name, Double price, Integer quantity, String description){
-        storage.createNewProductRecord(name, price, quantity, description);
+    public void createTestingProducts(String name, Double price, Integer quantity, String description){
+        storage.createNewProductTypeRecord(name, price, quantity, description);
     }
 }

@@ -8,22 +8,22 @@ import java.util.Scanner;
 
 public class LoginView {
     private DataBase dataBase;
-    private LoginController controller;
+    private LoginController loginController;
     private Scanner scanner;
     public LoginView(DataBase dataBase){
         this.dataBase = dataBase;
-        this.controller = new LoginController(dataBase);
+        this.loginController = new LoginController(dataBase);
         this.scanner = new Scanner(System.in);
     }
 
-    public void view(){
+    public void showLoginView(){
         System.out.println("--------------------------------------------------------------------------------------------");
         System.out.println("\n               Área de login\n");
 
         Costumer loggedInCostumer = login();
 
         EcommerceView ecommerce = new EcommerceView(dataBase, loggedInCostumer);
-        ecommerce.view();
+        ecommerce.showEcommerceView();
     }
     public Costumer login() {
         System.out.println("Insira seu email cadastrado: ");
@@ -32,7 +32,7 @@ public class LoginView {
         System.out.println("Insira sua senha: ");
         String password = scanner.nextLine();
 
-        Costumer loggedInCostumer = controller.loginCheck(login, password);
+        Costumer loggedInCostumer = loginController.processLogin(login, password);
 
         System.out.println("Login efetuado, " + loggedInCostumer.getName() +"!");
         System.out.println("--------------------------------------------------------------------------------------------");
